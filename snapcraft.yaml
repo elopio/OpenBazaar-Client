@@ -1,0 +1,24 @@
+name: openbazaar
+version: master
+summary: application for talking with the OpenBazaar-Server daemon
+description: |
+  OpenBazaar is a different way to do online commerce. Instead of visiting a
+  website, you download and install a program on your computer that directly
+  connects you to other people looking to buy and sell goods and services with
+  you. This peer to peer network isn't controlled by any company or organization
+  - it's a community of people who want to engage in trade directly with each
+  other.
+
+grade: devel
+confinement: strict
+
+apps:
+  openbazaar:
+    command:  sh -c \"cd $SNAP/lib/node_modules/OpenBazaar && npm start\"
+    plugs: [network]
+
+parts:
+  client:
+    source: .
+    plugin: nodejs
+    node-engine: '6.9.1'
